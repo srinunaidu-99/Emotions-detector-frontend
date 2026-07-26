@@ -17,18 +17,15 @@ if (loginForm) {
 
         e.preventDefault();
 
-
         const email =
         document.getElementById("loginEmail").value;
-
 
         const password =
         document.getElementById("loginPassword").value;
 
-
         try {
-
-            const res = await fetch(`${BACKEND_URL}/login`, {
+            // FIX: Changed BACKEND_URL to API_BASE_URL
+            const res = await fetch(`${API_BASE_URL}/login`, {
 
                 method: "POST",
 
@@ -43,11 +40,7 @@ if (loginForm) {
 
             });
 
-
-
             const data = await res.json();
-
-
 
             if (res.ok) {
 
@@ -56,20 +49,15 @@ if (loginForm) {
                     data.token
                 );
 
-
                 alert("Login Successful 🎉");
 
-
                 window.location.href = "dashboard.html";
-
 
             } else {
 
                 alert(data.message);
 
             }
-
-
 
         } catch(error) {
 
@@ -78,7 +66,6 @@ if (loginForm) {
             alert("Server Error ❌");
 
         }
-
 
     });
 
@@ -151,8 +138,8 @@ return;
 
 try{
 
-
-const res = await fetch(`${BACKEND_URL}/register`,{
+// FIX: Changed BACKEND_URL to API_BASE_URL
+const res = await fetch(`${API_BASE_URL}/register`,{
 
 
 method:"POST",
