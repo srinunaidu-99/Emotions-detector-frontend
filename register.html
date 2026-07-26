@@ -225,14 +225,13 @@ Login
 <script>
 
 
-// Backend URL
+// Updated to live Render Backend URL
+const API_URL = "https://emotions-detector-backend-1.onrender.com";
 
-const API_URL = "http://localhost:3000";
-
-
-// If using ngrok:
-// const API_URL = "https://your-ngrok-url.ngrok-free.dev";
-
+// Automatically wake up the Render backend on load
+fetch(API_URL)
+    .then(res => console.log("Backend woken up successfully"))
+    .catch(err => console.log("Waking up backend..."));
 
 
 const registerForm = document.getElementById("registerForm");
