@@ -3,6 +3,10 @@
 // ===============================
 const API_BASE_URL = "https://emotions-detector-backend-1.onrender.com";
 
+// Automatically wake up the Render backend as soon as the page loads
+fetch(API_BASE_URL)
+    .then(res => console.log("Backend woken up successfully"))
+    .catch(err => console.log("Waking up backend..."));
 
 // ===============================
 // LOGIN
