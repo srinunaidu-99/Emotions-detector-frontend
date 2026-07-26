@@ -24,7 +24,6 @@ if (loginForm) {
         document.getElementById("loginPassword").value;
 
         try {
-            // FIX: Changed BACKEND_URL to API_BASE_URL
             const res = await fetch(`${API_BASE_URL}/login`, {
 
                 method: "POST",
@@ -55,15 +54,15 @@ if (loginForm) {
 
             } else {
 
-                alert(data.message);
+                alert(data.message || "Login failed ❌");
 
             }
 
         } catch(error) {
 
             console.log(error);
-
-            alert("Server Error ❌");
+            // Added guidance for Render cold start timeout / connection drops
+            alert("Server connection failed. If your Render backend was asleep, please wait 30 seconds and try again ❌");
 
         }
 
@@ -138,7 +137,6 @@ return;
 
 try{
 
-// FIX: Changed BACKEND_URL to API_BASE_URL
 const res = await fetch(`${API_BASE_URL}/register`,{
 
 
@@ -187,7 +185,7 @@ window.location.href="login.html";
 else{
 
 
-alert(data.message);
+alert(data.message || "Registration failed ❌");
 
 
 }
@@ -200,9 +198,8 @@ catch(error){
 
 
 console.log(error);
-
-
-alert("Server Error ❌");
+// Added guidance for Render cold start timeout / connection drops
+alert("Server connection failed. If your Render backend was asleep, please wait 30 seconds and try again ❌");
 
 
 }
