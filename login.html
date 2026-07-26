@@ -285,16 +285,13 @@ Register
 <script>
 
 
-// Backend URL
+// Live Render Backend URL
+const API_URL = "https://emotions-detector-backend-1.onrender.com";
 
-const API_URL="http://localhost:3000";
-
-
-// ngrok use chesthe:
-// const API_URL="https://your-ngrok-url.ngrok-free.dev";
-
-
-
+// Automatically wake up backend on page load
+fetch(API_URL)
+    .then(res => console.log("Backend woken up successfully"))
+    .catch(err => console.log("Waking up backend..."));
 
 
 document
