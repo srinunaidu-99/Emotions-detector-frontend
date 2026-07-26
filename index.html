@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionCore AI | Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #6366f1; --bg: #0b0f1a; --glass: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.1); }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Plus Jakarta Sans', sans-serif; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; background: radial-gradient(circle at top left, #1e1b4b, #0b0f1a 70%); }
+        .blob { position: absolute; width: 500px; height: 500px; background: var(--primary); filter: blur(120px); border-radius: 50%; opacity: 0.1; z-index: -1; animation: drift 20s infinite alternate; }
+        @keyframes drift { from { transform: translate(-10%, -10%); } to { transform: translate(10%, 10%); } }
+        .container { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); padding: 3.5rem; border-radius: 32px; text-align: center; max-width: 450px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+        h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
+        p { color: #94a3b8; margin-bottom: 2.5rem; line-height: 1.6; }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        button { padding: 16px; border-radius: 14px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: 0.3s; border: none; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(99,102,241,0.3); }
+        .btn-secondary { background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body>
+    <div class="blob"></div>
+    <div class="container">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🤖</div>
+        <h1>VisionCore <span style="color: var(--primary);">AI</span></h1>
+        <p>Advanced neural expression mapping and emotion detection dashboard.</p>
+        <div class="btn-group">
+            <button class="btn-primary" onclick="location.href='login.html'">Login to Portal</button>
+            <button class="btn-secondary" onclick="location.href='register.html'">Create Identity</button>
+        </div>
+    </div>
+</body>
+</html>
