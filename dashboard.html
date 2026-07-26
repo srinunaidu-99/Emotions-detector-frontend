@@ -342,11 +342,7 @@ font-weight:bold;
 
 <div class="nav-icon active">📷</div>
 
-<div class="nav-icon">👤</div>
-
-<div class="nav-icon" onclick="location.href='index.html'">
-🚪
-</div>
+<div class="nav-icon" onclick="localStorage.removeItem('token'); location.href='login.html';">🚪</div>
 
 </nav>
 
@@ -440,39 +436,30 @@ SYSTEM READY
 // BACKEND URL
 // ======================
 
+const API_URL = "https://emotions-detector-backend-1.onrender.com";
 
-const API_URL =
-"http://127.0.0.1:3000";
-
-// ngrok use:
-// const API_URL="https://your-ngrok.ngrok-free.dev";
-
-
+// Automatically wake up backend on load
+fetch(API_URL)
+    .then(res => console.log("Backend woken up successfully"))
+    .catch(err => console.log("Waking up backend..."));
 
 
-
-const video =
-document.getElementById("video");
-
-
-const btn =
-document.getElementById("btn");
-
-
-const emotionText =
-document.getElementById("emotionText");
-
-
-const scanLine =
-document.getElementById("scanLine");
-
-
-const canvas =
-document.getElementById("canvas");
+// Verify Authentication Token
+const token = localStorage.getItem("token");
+if (!token) {
+    alert("Please login first 🔐");
+    window.location.href = "login.html";
+}
 
 
 
-let scanning=false;
+const video = document.getElementById("video");
+const btn = document.getElementById("btn");
+const emotionText = document.getElementById("emotionText");
+const scanLine = document.getElementById("scanLine");
+const canvas = document.getElementById("canvas");
+
+let scanning = false;
 
 
 
@@ -587,7 +574,8 @@ method:"POST",
 headers:{
 
 "Content-Type":
-"application/json"
+"application/json",
+"Authorization": `Bearer ${token}`
 
 },
 
@@ -610,7 +598,7 @@ await res.json();
 
 
 emotionText.innerText =
-data.emotion.toUpperCase();
+(data.emotion || "UNKNOWN").toUpperCase();
 
 
 
